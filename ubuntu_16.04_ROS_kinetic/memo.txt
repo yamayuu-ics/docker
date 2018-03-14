@@ -1,0 +1,6 @@
+
+build command of Docker file
+
+docker build -t ubuntu_ros_k .
+
+
