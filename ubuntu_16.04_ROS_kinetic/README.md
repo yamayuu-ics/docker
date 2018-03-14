@@ -7,6 +7,7 @@ OS		:ubuntu 16.04
 
 ROS	:kinetik-desktop-full
 
+vim, screen.
 
 ## build command:
 
