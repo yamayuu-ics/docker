@@ -1,4 +1,4 @@
-#!/bin/sh
+#/bin/sh
 
 echo "start ros on docker"
 echo ""
@@ -16,4 +16,4 @@ echo ""
 nvidia-docker run -ti --rm  -e DISPLAY=$DISPLAY \
 	-v /tmp/.X11-unix/:/tmp/.X11-unix \
 	-v /home/yamayuu/work/:/home/yamayuu/work \
-	ubuntu16.04_ros_k /bin/bash
+	mxnet_r_cuda8_dnn5:$1

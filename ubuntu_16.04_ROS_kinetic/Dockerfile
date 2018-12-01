@@ -1,4 +1,10 @@
-FROM ubuntu:16.04
+#FROM ubuntu:16.04
+FROM nvidia/cuda:latest
+
+# NVIDIAドライバ使うことをnvidia-dockerに教える
+LABEL com.nvidia.volumes.needed="nvidia_driver"
+
+ARG user="yamayuu"
 
 MAINTAINER yamayuu
 
@@ -24,16 +30,21 @@ RUN rosdep update
 
 RUN apt-get install python-rosinstall -y
 
+RUN apt-get install ros-kinetic-kobuki-gazebo -y
+RUN apt-get install ros-kinetic-turtlebot-gazebo -y
+RUN apt-get install ros-kinetic-rqt-ez-publisher -y
+
+
 # Replace 1000 with your user / group id
 ARG uid=1000
 ARG gid=1000
-RUN groupadd -g ${uid} yamayuu && \
-	useradd -u ${gid} -g yamayuu -r yamayuu && \
-	mkdir /home/yamayuu && \
-	chown ${uid}:${gid} -R /home/yamayuu
+RUN groupadd -g ${uid} ${user} && \
+	useradd -u ${gid} -g ${user} -r ${user} && \
+	mkdir /home/${user} && \
+	chown ${uid}:${gid} -R /home/${user}
 
-USER yamayuu
-WORKDIR /home/yamayuu
+USER ${user}
+WORKDIR /home/${user}
 
 RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 #RUN source ~/.bashrc
