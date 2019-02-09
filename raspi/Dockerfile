@@ -18,6 +18,10 @@ RUN apt-get install -y --no-install-recommends \
 RUN pip3 install --upgrade pip setuptools
 RUN pip3 install rpi.gpio
 RUN pip3 install numpy opencv-python
-RUN pip3 install tensorflow
-RUN pip3 install pandas 
+#RUN pip3 install tensorflow
+RUN pip3 install pandas
+#RUN pip3 install -U virtualenv 
+RUN pip3 install --user --upgrade tensorflow
+
+
 
