@@ -24,30 +24,31 @@ RUN apt-get install python3-dev -y
 RUN apt-get install python3-setuptools -y
 RUN apt-get install python3-pip -y
 RUN apt-get install python3-scipy -y
-RUN apt-get install python-h5py -y
+RUN apt-get install python3-h5py -y
+RUN apt-get install python3-tk -y
 
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/list/*
 
-RUN pip3 install --upgrade pip setuptools
+#RUN pip3 install --upgrade pip3 setuptools
 RUN pip3 install numpy 
 RUN pip3 install opencv-python==3.4.5.20
-RUN pip3 install tensorflow==1.0
+RUN pip3 install tensorflow-gpu==1.0
 RUN pip3 install keras
-
-
+RUN pip3 install matplotlib
+RUN pip3 install pillow
 
 
 ## make user
 ## Replace 1000 with your user / group id
-#ARG uid=1000
-#ARG gid=1000
-#RUN groupadd -g ${uid} ${user} && \
-#	useradd -u ${gid} -g ${user} -r ${user} && \
-#	mkdir /home/${user} && \
-#	chown ${uid}:${gid} -R /home/${user}
+ARG uid=1000
+ARG gid=1000
+RUN groupadd -g ${uid} ${user} && \
+	useradd -u ${gid} -g ${user} -r ${user} && \
+	mkdir /home/${user} && \
+	chown ${uid}:${gid} -R /home/${user}
 
-#USER ${user}
-#WORKDIR /home/${user}
+USER ${user}
+WORKDIR /home/${user}
 
 
