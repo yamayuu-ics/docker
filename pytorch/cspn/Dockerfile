@@ -7,6 +7,7 @@ ARG user="yamayuu"
 
 MAINTAINER yamayuu
 
+## if you use ubuntu 18.04 image. this is must.
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get upgrade -y --no-install-recommends
