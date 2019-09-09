@@ -28,9 +28,11 @@ RUN apt-get install python3-setuptools -y
 RUN apt-get install python3-pip -y
 RUN apt-get install python3-scipy -y
 RUN apt-get install python3-h5py -y
+#RUN apt-get install --reinstall python*-decorator
+RUN apt-get install python3-tk -y
 
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/list/*
+#RUN apt-get clean
+#RUN rm -rf /var/lib/apt/list/*
 
 RUN pip3 install --upgrade pip
 RUN pip3 install numpy 
@@ -39,9 +41,12 @@ RUN pip3 install matplotlib
 RUN pip3 install pillow
 
 RUN pip3 install torch torchvision
-RUN pip3 install h5py pandas imageio scikit-image
+RUN pip3 install h5py pandas imageio
+RUN pip3 install scikit-image
 
+RUN apt install --reinstall python*-decorator -y
 
+RUN pip3 install tqdm
 
 ## make user
 ## Replace 1000 with your user / group id
